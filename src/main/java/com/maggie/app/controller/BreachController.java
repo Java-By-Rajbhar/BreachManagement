@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.maggie.app.dto.BreachRequestDto;
-import com.maggie.app.dto.BreachResponseDto;
+import com.maggie.app.dto.BreachResponseDto2;
+import com.maggie.app.dto.BusinessAreaDto;
+import com.maggie.app.dto.FranchiseResponseDto;
 import com.maggie.app.dto.UserResponseDto;
 import com.maggie.app.entity.Breach;
 import com.maggie.app.service.BreachService;
-
 
 @RestController
 @CrossOrigin(allowedHeaders = { "*", "/" }, origins = { "*", "/" })
@@ -30,11 +31,26 @@ public class BreachController {
 	private static final  Logger logger = LoggerFactory.getLogger(BreachController.class);
     @Autowired
     BreachService breachService;
-    
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(BreachController.class);
 	@PostMapping("/create")
-	public ResponseEntity<BreachResponseDto> create(@RequestBody BreachRequestDto breachRequestDto)
-	{
-		return new ResponseEntity<>(HttpStatus.OK);
+	public ResponseEntity<BreachResponseDto2> create(@RequestBody BreachRequestDto breachRequestDto) {
+		BreachResponseDto2 breachResponseDto = breachService.createBreach(breachRequestDto);
+		return new ResponseEntity<>(breachResponseDto, HttpStatus.OK);
+	}
+
+	@GetMapping("/franchiseList")
+	public ResponseEntity<List<FranchiseResponseDto>> franchiseList() {
+		LOGGER.info(" in franchiseList");
+		return new ResponseEntity<>(breachService.franchiseList(), (HttpStatus.OK));
+	}
+
+	@GetMapping("/franchise/{franchiseId}")
+	public ResponseEntity<List<BusinessAreaDto>> franchise(@PathVariable Long franchiseId) {
+		LOGGER.info(" in franchise");
+
+		return new ResponseEntity<>(breachService.franchise(franchiseId), HttpStatus.OK);
+
 	}
 	
 	@GetMapping("/viewBreach/{status}")
@@ -54,3 +70,4 @@ public class BreachController {
 	}
 	
 }
+

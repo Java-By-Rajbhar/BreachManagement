@@ -12,6 +12,10 @@ import com.maggie.app.entity.Breach;
 @Repository
 public interface BreachRepository extends JpaRepository<Breach, Long> {
 
+
+	Breach findByBreachId(Long breachId);
+
+
 	/**
 	 * 
 	 * @param riskType
@@ -25,6 +29,4 @@ public interface BreachRepository extends JpaRepository<Breach, Long> {
 	 * @return List<Breach>
 	 */
 	public List<Breach> findByStatus(String status);
-	
-	
 }
