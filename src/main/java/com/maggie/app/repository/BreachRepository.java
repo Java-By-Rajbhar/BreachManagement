@@ -25,4 +25,6 @@ public interface BreachRepository extends JpaRepository<Breach, Long> {
 	 * @return List<Breach>
 	 */
 	public List<Breach> findByStatus(String status);
+	
+	
 }

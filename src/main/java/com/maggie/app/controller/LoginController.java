@@ -7,11 +7,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.maggie.app.dto.UserDetailDto;
 import com.maggie.app.dto.UserRequestDto;
 import com.maggie.app.dto.UserResponseDto;
 import com.maggie.app.service.UserService;
@@ -22,6 +24,7 @@ import com.maggie.app.service.UserService;
  *
  */
 @RequestMapping("/api")
+@CrossOrigin(allowedHeaders = { "*", "/" }, origins = { "*", "/" })
 @RestController
 public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -33,10 +36,10 @@ public class LoginController {
 	 * @return ResponseEntity<List<UserResponseDto>>
 	 */
 	@PostMapping("/login")
-	public ResponseEntity<List<UserResponseDto>> userLogin(@RequestBody UserRequestDto userRequestDto)
+	public ResponseEntity<UserDetailDto> userLogin(@RequestBody UserRequestDto userRequestDto)
 	{
 		logger.info("inside userLogin method LoginController class");
-		List<UserResponseDto> loginResponse = userService.userLogin(userRequestDto);
-		return new ResponseEntity<List<UserResponseDto>>(loginResponse, HttpStatus.OK);
+		UserDetailDto loginResponse = userService.userLogin(userRequestDto);
+		return new ResponseEntity<UserDetailDto>(loginResponse, HttpStatus.OK);
 	}
 }
