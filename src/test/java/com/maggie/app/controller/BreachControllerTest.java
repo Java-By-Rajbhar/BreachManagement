@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maggie.app.dto.BreachRequestDto;
-import com.maggie.app.dto.BreachResponseDto;
+import com.maggie.app.dto.BreachResponseDto2;
 import com.maggie.app.entity.Breach;
 import com.maggie.app.service.BreachService;
 
@@ -28,7 +28,7 @@ public class BreachControllerTest {
 	@MockBean
 	BreachService breachService;
 
-	BreachResponseDto breachResponseDto = null;
+	BreachResponseDto2 breachResponseDto = null;
 	BreachRequestDto breachRequestDto = null;
 	Breach breach = null;
 
@@ -43,7 +43,7 @@ public class BreachControllerTest {
 		breach = new Breach();
 		breach.setBreachId(1L);
 
-		breachResponseDto = new BreachResponseDto();
+		breachResponseDto = new BreachResponseDto2();
 		breachResponseDto.setMessage("Breach Is successfully registered.....");
 
 		Mockito.when(breachService.createBreach(breachRequestDto)).thenReturn(breachResponseDto);

@@ -7,5 +7,7 @@ import com.maggie.app.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+	
+	public User findByUserId(Long userId);
 
 }

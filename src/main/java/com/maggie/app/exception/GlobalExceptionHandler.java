@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  *
  */
 @ControllerAdvice
+
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 	
 	@ExceptionHandler(RiskProfileNotFoundException.class)
@@ -27,5 +28,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		ResponseError error =  new ResponseError(ex.getMessage(), HttpStatus.NOT_FOUND.value());
 		return new ResponseEntity<ResponseError>(error, HttpStatus.NOT_FOUND);
 	}
+		
+		
+		@ExceptionHandler(InvalidCredentialsException.class)
+		public ResponseEntity<ResponseError> invalidUserHandler(InvalidCredentialsException exception)
+		{
+			ResponseError error  = new ResponseError(exception.getMessage(), HttpStatus.NOT_FOUND.value());
+			
 
+			return new ResponseEntity<ResponseError>(error, HttpStatus.NOT_FOUND);
+		}
 }

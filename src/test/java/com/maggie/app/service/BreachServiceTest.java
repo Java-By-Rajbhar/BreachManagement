@@ -11,7 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.maggie.app.dto.BreachRequestDto;
-import com.maggie.app.dto.BreachResponseDto;
+import com.maggie.app.dto.BreachResponseDto2;
 import com.maggie.app.entity.Breach;
 import com.maggie.app.repository.BreachRepository;
 
@@ -27,7 +27,7 @@ public class BreachServiceTest {
 	BreachRepository breachRepository;
 
 	BreachRequestDto breachRequestDto = null;
-	BreachResponseDto breachResponseDto = null;
+	BreachResponseDto2 breachResponseDto = null;
 	Breach breach = null;
 
 	@Test
@@ -41,7 +41,7 @@ public class BreachServiceTest {
 		breach = new Breach();
 		breach.setBreachId(1L);
 
-		breachResponseDto = new BreachResponseDto();
+		breachResponseDto = new BreachResponseDto2();
 		breachResponseDto.setMessage("Breach Details successfully Submitted");
 
 		Mockito.when(breachRepository.save(Mockito.any())).thenReturn(breach);
