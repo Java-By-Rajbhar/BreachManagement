@@ -5,5 +5,7 @@ package com.maggie.app.service;
  *
  */
 public interface UserService {
+	
+	
 
 }
