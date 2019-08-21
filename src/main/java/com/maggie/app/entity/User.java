@@ -29,5 +29,6 @@ public class User implements Serializable{
 	private Long userId;
 	@OneToOne
 	private Role role;
+	private String password;
 	
 }

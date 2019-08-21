@@ -35,7 +35,7 @@ public class RiskController {
 	public ResponseEntity<List<RiskResponseDto>> getAllRiskProfiles(@PathVariable String franchise, @PathVariable String businessArea,@PathVariable String breachCategory) 
 	
 	{
-		logger.info("inside getAllMerchants method of merchant controller class");
+		logger.info("inside getAllRiskProfiles method of Risk controller class");
 
 		List<RiskResponseDto> riskResponseDto = riskService.getAllRiskProfiles(franchise,businessArea,breachCategory);
 		return new ResponseEntity<>(riskResponseDto,HttpStatus.OK);
