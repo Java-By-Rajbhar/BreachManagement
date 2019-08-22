@@ -11,7 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ActionRequestDto {
 
-	private String status;
-	private String breachState;
+	private Long breachId;
 
 }
