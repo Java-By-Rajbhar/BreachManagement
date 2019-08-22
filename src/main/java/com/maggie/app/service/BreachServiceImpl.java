@@ -53,6 +53,8 @@ private static final  Logger LOGGER = LoggerFactory.getLogger(BreachServiceImpl.
 		BreachResponseDto2 breachResponseDto= new BreachResponseDto2();
 		Breach breach=new Breach();
 		BeanUtils.copyProperties(breachRequestDto, breach);
+		breach.setStatus("PENDING");
+		breach.setBreachState("OPEN");
 		breachRepository.save(breach);
 		breachResponseDto.setMessage("Breach Details successfully Submitted");
 		breachResponseDto.setBreachId(breach.getBreachId());

@@ -12,9 +12,10 @@ public class BreachRequestDto {
 	private String raiseBy;
 	private String franchise;
 	private String businessArea;
-	private String breachState;
 	private Date reportedDate;
 	private String breachCategory;
-	private String status;
-
+	private String riskType;
+	
 }
+
+	
